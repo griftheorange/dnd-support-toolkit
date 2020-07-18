@@ -30,9 +30,13 @@ def dice_roller():
                     if pattern.match(die):
                         values = die.split("d")
                         output = ""
+                        sum = 0
                         for i in range(int(values[0])):
-                            output = output + str(get_random(values[1])) + ", "
-                        print(die+': '+output.strip(", ")+'\n')
+                            roll = get_random(values[1])
+                            sum += roll
+                            output = output + str(roll) + ", "
+                        output = die+': '+output.strip(", ")+'\nSUM: '+str(sum)+'\nAVG: '+str(sum/float(values[0]))+"\n"
+                        print(output)
                         
 def get_random(max):
     return random.randint(1, int(max))
